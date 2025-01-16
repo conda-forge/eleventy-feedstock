@@ -4,7 +4,7 @@
 
 [project]
 name = "eleventy-feedstock"
-version = "3.44.9"
+version = "3.45.2"
 description = "Pixi configuration for conda-forge/eleventy-feedstock"
 authors = ["@conda-forge/eleventy"]
 channels = ["conda-forge"]
