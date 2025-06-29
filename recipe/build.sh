@@ -9,6 +9,7 @@ jq 'del(.scripts.prepare)' package.json.bak > package.json
 # Create package archive and install globally
 npm pack --ignore-scripts
 npm install -ddd \
+    --no-bin-links \
     --global \
     --build-from-source \
     ${SRC_DIR}/11ty-${PKG_NAME}-${PKG_VERSION}.tgz
@@ -17,6 +18,14 @@ npm install -ddd \
 pnpm install
 pnpm-licenses generate-disclaimer --prod --output-file=third-party-licenses.txt
 
+mkdir -p ${PREFIX}/bin
+
+tee ${PREFIX}/bin/eleventy << EOF
+#!/bin/sh
+exec \${CONDA_PREFIX}/lib/node_modules/@11ty/eleventy/cmd.cjs "\$@"
+EOF
+chmod +x ${PREFIX}/bin/eleventy
+
 tee ${PREFIX}/bin/eleventy.cmd << EOF
-call %CONDA_PREFIX%\bin\node %CONDA_PREFIX%\bin\eleventy %*
+call %CONDA_PREFIX%\bin\node %CONDA_PREFIX%\lib\node_modules\@11ty\eleventy\cmd.cjs %*
 EOF
