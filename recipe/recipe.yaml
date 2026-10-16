@@ -1,5 +1,5 @@
 context:
-  version: "3.1.6"
+  version: "3.1.7"
 
 package:
   name: eleventy
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://registry.npmjs.org/@11ty/eleventy/-/eleventy-${{ version }}.tgz
-  sha256: 326f9e03a76665722c723be64e1021353143f6941fe1f53dd9d700405fd539a3
+  sha256: 71a54c83855a9eec0171321d9aded12de5d8635cbbf06dd8edfbc92d9cb3ef58
 
 build:
   number: 0
